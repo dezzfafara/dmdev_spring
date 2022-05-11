@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="pool1" name="p1" class="com.dmdev.spring.database.pool.ConnectionPool">
+    <bean id="pool1" name="p1" class="com.dmdev.spring.database.pool.ConnectionPool" scope="prototype">
         <constructor-arg name="userName" value="postgres"/>
         <constructor-arg name="poolSize" value="10"/>
         <constructor-arg name="args">
