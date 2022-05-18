@@ -5,13 +5,17 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder location="application.properties"/>
+    <context:annotation-config/>
+
+
+    <bean class="com.dmdev.spring.bfpp.LogBeanFactoryPostProcessor"/>
+    <bean class="com.dmdev.spring.bfpp.VerifyPropertyBeanFactoryPostProcessor"/>
 
     <bean id="driver" class="java.lang.String">
         <constructor-arg type="java.lang.String" value="${db.driver}"/>
     </bean>
 
-    <bean id="pool1" name="p1" class="com.dmdev.spring.database.pool.ConnectionPool" init-method="init"
-          destroy-method="destroy">
+    <bean id="pool1" name="p1" class="com.dmdev.spring.database.pool.ConnectionPool">
         <constructor-arg name="userName" value="${db.username}"/>
         <constructor-arg name="poolSize" value="${db.pool.size}"/>
         <constructor-arg name="args">
@@ -28,7 +32,8 @@
             <map>
                 <entry key="url" value="http://localhost"/>
                 <entry key="password" value="123!"/>
-                <entry key="hosts" value="#{T(java.util.Arrays).stream('${db.hosts}'.split(',')).collect(T(java.util.stream.Collectors).toList)}"/>
+                <entry key="hosts"
+                       value="#{T(java.util.Arrays).stream('${db.hosts}'.split(',')).collect(T(java.util.stream.Collectors).toList)}"/>
             </map>
         </property>
     </bean>
