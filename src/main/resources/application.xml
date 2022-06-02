@@ -17,6 +17,7 @@
         <constructor-arg type="java.lang.String" value="${db.driver}"/>
     </bean>
 
+    <bean id="pool2" class="com.dmdev.spring.database.pool.ConnectionPool"/>
     <bean id="pool1" name="p1" class="com.dmdev.spring.database.pool.ConnectionPool">
         <constructor-arg name="userName" value="${db.username}"/>
         <constructor-arg name="poolSize" value="${db.pool.size}"/>
