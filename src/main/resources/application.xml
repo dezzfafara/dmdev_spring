@@ -5,41 +5,31 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder location="application.properties"/>
-    <context:annotation-config/>
+    <context:component-scan base-package="com.dmdev.spring"/>
 
-
-    <bean class="com.dmdev.spring.bpp.InjectBeanPostProcessor"/>
-    <bean class="com.dmdev.spring.bpp.TransactionBeanPostProcessor"/>
-    <bean class="com.dmdev.spring.bfpp.LogBeanFactoryPostProcessor"/>
-    <bean class="com.dmdev.spring.bfpp.VerifyPropertyBeanFactoryPostProcessor"/>
 
     <bean id="driver" class="java.lang.String">
         <constructor-arg type="java.lang.String" value="${db.driver}"/>
     </bean>
 
-    <bean id="pool2" class="com.dmdev.spring.database.pool.ConnectionPool"/>
-    <bean id="pool1" name="p1" class="com.dmdev.spring.database.pool.ConnectionPool">
-        <constructor-arg name="userName" value="${db.username}"/>
-        <constructor-arg name="poolSize" value="${db.pool.size}"/>
-        <constructor-arg name="args">
+   <!--     <constructor-arg name="args">
             <list>
-                <value>--arg1=value1</value>
-                <value>--arg2=value2</value>
-                <value>--arg3=value3</value>
+                <value>&#45;&#45;arg1=value1</value>
+                <value>&#45;&#45;arg2=value2</value>
+                <value>&#45;&#45;arg3=value3</value>
             </list>
-        </constructor-arg>
-        <constructor-arg name="properties">
+        </constructor-arg>-->
+     <!--   <constructor-arg name="properties">
             <null/>
-        </constructor-arg>
-        <property name="properties">
+        </constructor-arg>-->
+        <!--<property name="properties">
             <map>
                 <entry key="url" value="http://localhost"/>
                 <entry key="password" value="123!"/>
                 <entry key="hosts"
                        value="#{T(java.util.Arrays).stream('${db.hosts}'.split(',')).collect(T(java.util.stream.Collectors).toList)}"/>
             </map>
-        </property>
-    </bean>
+        </property>-->
 
     <bean id="companyRepository" class="com.dmdev.spring.database.repository.CompanyRepository"/>
 

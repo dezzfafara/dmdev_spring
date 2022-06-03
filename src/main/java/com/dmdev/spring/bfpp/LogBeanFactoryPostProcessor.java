@@ -3,7 +3,9 @@ package com.dmdev.spring.bfpp;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.core.PriorityOrdered;
+import org.springframework.stereotype.Component;
 
+@Component
 public class LogBeanFactoryPostProcessor implements BeanFactoryPostProcessor, PriorityOrdered {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) {
