@@ -35,6 +35,7 @@ public class ApplicationConfiguration {
         return new UserRepository(connectionPool);
     }
 
+    @Profile("prod")
     @Bean
     public UserRepository userRepository3() {
         return new UserRepository(pool3());
